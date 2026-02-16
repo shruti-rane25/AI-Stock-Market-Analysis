@@ -1,0 +1,129 @@
+# AI-Based Stock Market Analysis & Trading Signal System
+
+This project demonstrates an end-to-end AI pipeline for stock market analysis.
+It uses historical stock price data to predict prices and generate BUY / SELL / HOLD
+trading signals using Machine Learning.
+
+## Project Objective
+
+The goal of this project is to build a complete AI-based stock analysis system that:
+
+- Cleans and prepares historical stock data
+- Creates technical indicators (Moving Average, Volatility, Returns)
+- Predicts stock closing prices using Regression Model
+- Generates trading signals (BUY / SELL / HOLD)
+- Backtests the trading strategy performance
+
+This simulates how quantitative analysts and trading firms design algorithmic trading systems.
+
+
+## Dataset Information
+
+- Stock: TATASTEEL (NSE India)
+- Time Period: 2023 – 2026
+- Rows: ~500 trading days
+- Source: Historical NSE equity data
+
+### Features Available
+- Open, High, Low, Close price
+- Previous Close & Last Traded Price (LTP)
+- Volume & Trade Count
+- VWAP (Volume Weighted Average Price)
+- 52 Week High & Low
+
+### Engineered Features (Created in Project)
+- Daily Return
+- Moving Average (7, 14, 30 days)
+- Volatility
+- Volume Change
+- Trading Signals
+
+
+## Machine Learning Model
+
+We trained a **Linear Regression model** to predict the next day closing price.
+
+### Target Variable
+- CLOSE price
+
+### Input Features
+- OPEN
+- HIGH
+- LOW
+- VOLUME
+- MA_7
+- MA_14
+- MA_30
+- VOLATILITY
+
+### Train Test Split
+- 80% Training Data
+- 20% Testing Data
+
+The model learns the relationship between historical technical indicators and future stock price.
+
+This is a supervised regression problem where the model predicts a continuous value (price).
+
+
+## Model Evaluation
+
+To measure model accuracy we used:
+
+- MAE (Mean Absolute Error)
+- RMSE (Root Mean Squared Error)
+
+### Results
+
+MAE ≈ 0.54  
+RMSE ≈ 0.71
+
+### Interpretation
+
+The low error values indicate the model can predict stock prices with good accuracy.
+
+RMSE being slightly higher than MAE shows occasional larger deviations, which is normal in stock market prediction due to volatility.
+
+This demonstrates the model successfully learned price movement patterns from historical data.
+
+
+## Trading Signal Generation
+
+After predicting stock closing prices, we convert predictions into actionable trading signals.
+
+Logic:
+- If Predicted Price > Today's Close → BUY
+- If Predicted Price < Today's Close → SELL
+- Otherwise → HOLD
+
+This transforms the ML model into a decision-making trading system instead of only a prediction model.
+
+## Strategy Backtesting
+We evaluated the trading signals using historical data to simulate real trading performance.
+
+If BUY signal → We buy the stock
+If SELL signal → We sell the stock
+If HOLD → No trade
+
+This helps measure whether the AI model can actually make profit instead of only predicting prices.
+
+## Performance Insight
+The AI model was able to capture short-term price trends using technical indicators.
+
+The trading strategy avoided random decisions and instead reacted to predicted price movement.
+
+Although stock markets are unpredictable, the system shows how Machine Learning can support decision-making in trading.
+
+This simulates how quantitative analysts and hedge funds build algorithmic trading systems.
+
+## Conclusion
+We successfully built an end-to-end AI powered stock market analysis system.
+
+The project performs:
+- Data collection & cleaning
+- Feature engineering using technical indicators
+- Price prediction using Machine Learning
+- Trading signal generation
+- Strategy backtesting
+
+This project demonstrates practical application of AI in financial markets and algorithmic trading.
+
